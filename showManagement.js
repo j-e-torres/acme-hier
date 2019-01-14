@@ -1,6 +1,7 @@
 /*
-    - Not happy with this solution
+    - Not happy with this solution, feel like I can use more advanced approach
     - Doesn't scale with more different manager id levels;
+    - Also tried using
 */
 
 const users = [
@@ -23,20 +24,18 @@ moe
     let structureString = '';
 
     users.forEach(personObj => {
-        if (personObj.managerId === undefined) {
-            structureString += personObj.name;
-        }
-
-        else if (personObj.managerId === 1) {
-            structureString += "\n - " + personObj.name;
-        }
-
-        else if (personObj.managerId === 2) {
-            structureString += "\n    - " + personObj.name;
-        }
-
-        else {
-            structureString += "\n    - " + personObj.name;
+        switch (personObj.managerId) {
+            case 1:
+                structureString += "\n - " + personObj.name;
+                break;
+            case 2:
+                structureString += "\n    - " + personObj.name;
+                break;
+            case 4:
+                structureString += "\n    - " + personObj.name;
+                break;
+            default:
+                structureString += personObj.name
         }
     });
 
